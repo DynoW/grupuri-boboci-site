@@ -1,0 +1,156 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutElev from "../components/AboutElev.astro"
+import AboutLiceu from "../components/AboutLiceu.astro"
+import {app} from "../firebase/server";
+import {getFirestore} from "firebase-admin/firestore";
+
+interface Elev {
+  index: string; //JUDEȚUL DE ATMITERE
+  n: string; //CODUL CANDIDATULUI
+  jp: string; //JUDEȚUL DE PROVENIENȚĂ
+  s: string; //ȘCOALA DE PROVENIENȚĂ
+  rlm: string; //RENUNȚARE LIMBA MATERNĂ
+  madm: string; //MEDIA DE ADMITERE
+  mev: string; //MEDIA EN
+  nro: string; //NOTA LIMBA ROMÂNĂ
+  nmate: string; //NOTA LA MATEMATICĂ
+  lm: string; //LIMBA MATERNĂ
+  nlm: string; //NOTA LIMBA MATERNĂ
+  mabs: string; //MEDIA DE ABSOLVIRE
+  h: string; //LICEUL ÎN CARE A FOST REPARTIZAT
+  sp: string; //SPECIALIZAREA LA CARE A FOST REPARTIZAT
+}
+
+interface Liceu {
+  a: string; //ADRESA
+  d: string; //DESCRIERE
+  f: string; //FAX
+  img: string; //IMAGINE
+  j: string; //JUDET
+  l: string; //NUME
+  lc: string; //COD LICEU
+  link: string; //LINK GRUP BOBOCI
+  m: string; //MEDIU
+  p: string; //TELEFON
+  sp: number; //NR. SPECIALIZARI
+  t: string; //TIP UNITATE
+  web: string; //WEBSITE
+}
+
+interface Spec {
+  c: string; //COD SPECIALIZARE
+  f: string; //FILIERA
+  fi: string; //FORMA DE INVATAMANT
+  j: string; //JUDET
+  l: string; //NUME LICEU
+  lb: string; //BILINGV
+  lc: string; //COD LICEU
+  lp: string; //LIMBA DE PREDARE
+  m: string; //MEDIU
+  n: string; //NIVELUL
+  nlo: string; //NR. LOCURI OCUPATE
+  nlt: string; //NR. LOCURI TOTALE
+  p: string; //PROFIL
+  sp: string; //SPECIALIZARE
+  um: string; //ULTIMA MEDIE
+  uma: string; //ULTIMA MEDIE ANT.
+}
+
+const {id} = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+/// Connect to firestore & get elev data
+const db = getFirestore(app);
+const eleviRef = db.collection("elevi");
+const elevSnapshot = await eleviRef.doc(id).get();
+
+if (!elevSnapshot.exists) {
+  return Astro.redirect("/404");
+}
+const elev = elevSnapshot.data() as Elev;
+
+// /// Get liceu text from elev
+// function extractText(string: string) {
+//   const pattern = /<b>(.*?)<\/b>/g;
+//   const matches = string.match(pattern) || [];
+//   const result = matches.map((match: string) => match.replace(/<\/?b>/g, ""));
+//   return result;
+// }
+// const textLiceu = extractText(elev.h)[0];
+
+// /// Get liceu data
+// const liceeRef = db.collection("licee");
+// const liceuSnapshot = await liceeRef
+//   .doc(textLiceu)
+//   .collection("despre")
+//   .doc("Contact")
+//   .get();
+
+// if (!liceuSnapshot.exists) {
+//   console.log("No such document! LICEU", liceuSnapshot.data());
+// }
+
+// const liceu = liceuSnapshot.data() as Liceu;
+
+// /// No liceu description
+// if (liceu.d == undefined) {
+//   liceu.d =
+//     "Nu avem o descriere pentru acest liceu. Contactati: ceva@ceva.com pentru a ne ajuta sa adugam una!";
+// }
+
+// /// Get specialization data
+// const textSpec = extractText(elev.sp)[0].substring(6);
+// const specSnapshot = await liceeRef
+//   .doc(textLiceu)
+//   .collection("specializari")
+//   .doc(textSpec)
+//   .get();
+
+// if (!specSnapshot.exists) {
+//   console.log("No such document! SPEC", specSnapshot.data());
+// }
+
+// const spec = specSnapshot.data() as Spec;
+
+const liceu = [{}];
+const spec = [{}];
+---
+
+<Layout title={elev.n}>
+  <main>
+    <AboutElev elev = {elev} spec = {spec} />
+    <AboutLiceu liceu = {liceu} />
+  </main>
+</Layout>
+
+<style>
+  html {
+    background-color: #51db8f;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  }
+  main {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: larger;
+    gap: 10px;
+  }
+  @media only screen and (max-width: 750px) {
+    main {
+      flex-direction: column;
+      font-size: larger;
+      gap: 10px;
+    }
+  }
+  @media only screen and (min-width: 1550px) {
+    main {
+      font-size: x-large;
+      gap: 20px;
+    }
+  }
+</style>

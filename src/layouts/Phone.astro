@@ -1,0 +1,54 @@
+---
+import Bg from "../components/Bg.astro";
+---
+
+<main class="phone">
+    <div class="content">
+        <slot />
+    </div>
+    <Bg />
+
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 25px;
+            gap: 10px;
+        }
+
+        .phone {
+            background-image: url("/img/iphone.svg");
+            background-size: cover;
+            width: 370px; /* iPhone 6/7/8 screen size */
+            height: 745px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .phone > * {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        @media only screen and (max-width: 500px) {
+            .content {
+                width: 100%;
+                height: 100%;
+            }
+            .phone {
+                background: none;
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+</main>

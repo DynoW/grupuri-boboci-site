@@ -1,0 +1,205 @@
+---
+const {elev, spec} = Astro.props;
+---
+
+<div class="left">
+    <div class="l-top">
+        <table>
+            <thead>
+                <tr>
+                    <a href="/"
+                        ><img
+                            class="back-img"
+                            src="/img/arrow-left.svg"
+                            alt="icon"
+                        /></a
+                    >
+                    <th class="table-title"
+                        >Cod elev: <span set:html={elev.n} /></th
+                    >
+                    <th
+                        ><a href="/lista">Lista cu licee &gt</a
+                        ></th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Școala de proveniență:</td>
+                    <td set:html={elev.s} />
+                </tr>
+                <tr>
+                    <td>Județ de proveniență:</td>
+                    <td set:html={elev.jp} />
+                </tr>
+                <tr>
+                    <td>Medie absolvire:</td>
+                    <td set:html={elev.mabs} />
+                </tr>
+            </tbody>
+        </table>
+        <table class="centre-table">
+            <thead>
+                <tr>
+                    <th>Nota limba română</th>
+                    <th>Nota matematică</th>
+                    <th>Nota limba maternă</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td set:html={elev.nro} />
+                    <td set:html={elev.nmate} />
+                    <td set:html={elev.nlm} />
+                </tr>
+            </tbody>
+        </table>
+        <table class="centre-table">
+            <thead>
+                <tr>
+                    <th>Medie Evaluare Natională</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td set:html={elev.mev} />
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Liceu admitere:<br />Tipul liceului:</td>
+                    <td set:html={elev.h} />
+                </tr>
+                <tr>
+                    <td>Specializare:<br />Limba de predare:</td>
+                    <td set:html={elev.sp} />
+                </tr>
+                <tr>
+                    <td>Medie admitere:</td>
+                    <td><b>{elev.madm}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="l-bottom">
+        <h4 class="extra-title">Mai multe informații:</h4>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Cod specializare:</td>
+                    <td><b>{spec.c}</b></td>
+                </tr>
+                <tr>
+                    <td>Liceu:</td>
+                    <td>{spec.l}</td>
+                </tr>
+                <tr>
+                    <td>Profil:</td>
+                    <td>{spec.p}</td>
+                </tr>
+                <tr>
+                    <td>Specializare:</td>
+                    <td>{spec.sp}</td>
+                </tr>
+                <tr>
+                    <td>Nr. locuri:</td>
+                    <td>{spec.nlt}</td>
+                </tr>
+                <tr>
+                    <td>Nr. locuri ocupate:</td>
+                    <td>{spec.nlo}</td>
+                </tr>
+                <tr>
+                    <td>Ultima medie admitere 2023:</td>
+                    <td>{spec.um}</td>
+                </tr>
+                <tr>
+                    <td>Ultima medie admitere 2022:</td>
+                    <td>{spec.uma}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .left {
+        display: flex;
+        flex-direction: column;
+        order: 0;
+        flex: 1 2 0;
+        gap: 10px;
+    }
+    .back-img {
+        position: absolute;
+        top: 25px;
+        left: 30px;
+        user-select: none;
+    }
+    .l-top {
+        order: 0;
+        margin-top: 10px;
+        background-color: rgb(255, 255, 255, 0.4);
+        border-radius: 30px;
+        padding: 15px;
+    }
+    .l-bottom {
+        order: 1;
+        background-color: rgb(255, 255, 255, 0.4);
+        border-radius: 30px;
+        padding: 15px;
+    }
+    .extra-title {
+        margin: 0;
+    }
+    table {
+        width: 100%;
+    }
+    td {
+        vertical-align: top;
+        font-weight: 500;
+    }
+    .table-title {
+        font-size: x-large;
+        padding: 0;
+    }
+    .centre-table {
+        margin-top: 10px;
+    }
+    .centre-table tbody tr td {
+        text-align: center;
+    }
+    .centre-table,
+    .centre-table tbody tr td,
+    .centre-table thead th {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    a {
+        color: rgb(8, 56, 95);
+    }
+    @media only screen and (max-width: 750px) {
+        .back-img {
+            left: 5%;
+        }
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .left {
+            flex: 2 1 0;
+            gap: 10px;
+        }
+    }
+    @media only screen and (max-width: 1200px) {
+        .table-title {
+            padding-left: 7.5%;
+        }
+    }
+    @media only screen and (min-width: 1550px) {
+        .left {
+            gap: 20px;
+        }
+    }
+</style>

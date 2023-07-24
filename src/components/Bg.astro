@@ -1,0 +1,198 @@
+<div class="background">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
+<style>
+	@keyframes move {
+		100% {
+			transform: translate3d(0, 0, 1px) rotate(360deg);
+		}
+	}
+	.background {
+		position: absolute;
+		top: 1px;
+		left: 2.5%;
+		width: 90%;
+		height: 97%;
+		text-align: center;
+		background-color: #fff;
+		z-index: -1;
+		overflow: hidden;
+		border-radius: 58px;
+		border-style: solid;
+		border-width: 10px;
+		border-color: #000;
+	}
+	.background span {
+		width: 82px;
+		height: 82px;
+		border-radius: 82px;
+		backface-visibility: hidden;
+		position: absolute;
+		animation: move;
+		animation-duration: 1;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.background span:nth-child(0) {
+		color: #e14b5a;
+		top: 64%;
+		left: 10%;
+		animation-duration: 376s;
+		animation-delay: -281s;
+		transform-origin: -22vw -12vh;
+		box-shadow: -164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(1) {
+		color: #e14b5a;
+		top: 18%;
+		left: 23%;
+		animation-duration: 430s;
+		animation-delay: -1s;
+		transform-origin: 1vw -24vh;
+		box-shadow: 164px 0 3vmin currentColor;
+	}
+	.background span:nth-child(2) {
+		color: #5c5bfd;
+		top: 42%;
+		left: 51%;
+		animation-duration: 285s;
+		animation-delay: -459s;
+		transform-origin: -1vw 4vh;
+		box-shadow: 164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(3) {
+		color: #5c5bfd;
+		top: 40%;
+		left: 5%;
+		animation-duration: 351s;
+		animation-delay: -197s;
+		transform-origin: -10vw -17vh;
+		box-shadow: 164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(4) {
+		color: #e14b5a;
+		top: 24%;
+		left: 48%;
+		animation-duration: 460s;
+		animation-delay: -421s;
+		transform-origin: 14vw -23vh;
+		box-shadow: -164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(5) {
+		color: #ffd037;
+		top: 91%;
+		left: 87%;
+		animation-duration: 307s;
+		animation-delay: -293s;
+		transform-origin: -5vw -5vh;
+		box-shadow: -164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(6) {
+		color: #ffd037;
+		top: 40%;
+		left: 9%;
+		animation-duration: 178s;
+		animation-delay: -69s;
+		transform-origin: 22vw 22vh;
+		box-shadow: 164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(7) {
+		color: #5c5bfd;
+		top: 26%;
+		left: 99%;
+		animation-duration: 350s;
+		animation-delay: -271s;
+		transform-origin: 3vw 21vh;
+		box-shadow: -164px 0 3vmin currentColor;
+	}
+	.background span:nth-child(8) {
+		color: #5c5bfd;
+		top: 93%;
+		left: 28%;
+		animation-duration: 55s;
+		animation-delay: -275s;
+		transform-origin: 7vw 8vh;
+		box-shadow: -164px 0 2vmin currentColor;
+	}
+	.background span:nth-child(9) {
+		color: #ffd037;
+		top: 80%;
+		left: 78%;
+		animation-duration: 210s;
+		animation-delay: -430s;
+		transform-origin: -2vw 16vh;
+		box-shadow: 164px 0 3vmin currentColor;
+	}
+	.background span:nth-child(10) {
+		color: #5c5bfd;
+		top: 87%;
+		left: 38%;
+		animation-duration: 173s;
+		animation-delay: -467s;
+		transform-origin: 1vw -23vh;
+		box-shadow: 164px 0 3vmin currentColor;
+	}
+	.background span:nth-child(11) {
+		color: #5c5bfd;
+		top: 27%;
+		left: 38%;
+		animation-duration: 87s;
+		animation-delay: -167s;
+		transform-origin: 4vw 4vh;
+		box-shadow: 164px 0 1vmin currentColor;
+	}
+	.background span:nth-child(12) {
+		color: #5c5bfd;
+		top: 76%;
+		left: 30%;
+		animation-duration: 476s;
+		animation-delay: -183s;
+		transform-origin: -6vw 7vh;
+		box-shadow: 164px 0 3vmin currentColor;
+	}
+	.background span:nth-child(13) {
+		color: #e14b5a;
+		top: 65%;
+		left: 67%;
+		animation-duration: 18s;
+		animation-delay: -414s;
+		transform-origin: 9vw 17vh;
+		box-shadow: -164px 0 2vmin currentColor;
+	}
+	.background span:nth-child(14) {
+		color: #ffd037;
+		top: 88%;
+		left: 61%;
+		animation-duration: 131s;
+		animation-delay: -19s;
+		transform-origin: -23vw 6vh;
+		box-shadow: -164px 0 1vmin currentColor;
+	}
+
+	@media only screen and (max-width: 500px) {
+		.background {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+			border-radius: 0;
+		}
+	}
+</style>

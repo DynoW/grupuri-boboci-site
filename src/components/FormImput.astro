@@ -1,0 +1,75 @@
+<form action="api/redirect" method="post">
+  <div class="input-container">
+    <img src="/img/icon-phone.svg" alt="icon" />
+    <input type="text" name="elevId" placeholder="ex: B10781545" required minlength="8" maxlength="10" />
+  </div>
+  <div class="button-container">
+    <button type="submit">Search</button>
+    <img src="/img/arrow-right.svg" alt="icon" />
+  </div>
+</form>
+
+
+<style>
+  form {
+    order: 3;
+  }
+
+  .input-container {
+    position: relative;
+  }
+
+  .input-container input {
+    padding-left: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40px;
+    margin: 5px;
+    width: 210px;
+  }
+
+  .input-container img {
+    position: absolute;
+    top: 30%;
+    left: 15px;
+  }
+
+  .button-container {
+    position: relative;
+  }
+
+  .button-container img {
+    position: absolute;
+    top: 35%;
+    right: 15px;
+  }
+
+  .button-container button {
+    padding-right: 40px;
+    border: 1px solid #4e74f9;
+    border-radius: 10px;
+    background-color: #4e74f9;
+    height: 40px;
+    margin: 5px;
+    width: 250px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: 130%;
+    height: 54px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24),
+    0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .input-container input {
+      width: 250px;
+      font-size: 16px;
+    }
+    .button-container button {
+      width: 294px;
+    }
+  }
+</style>

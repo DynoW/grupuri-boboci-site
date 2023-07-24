@@ -1,0 +1,85 @@
+---
+const {liceu} = Astro.props;
+---
+
+<div class="right">
+    <div class="r-top">
+        <span
+            ><b>Despre: {liceu.l}</b><br /><img
+                class="img-liceu"
+                src={liceu.img}
+                alt="imagine liceu"
+            /><br />{liceu.d}</span
+        >
+    </div>
+    <div class="r-bottom">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Nr. specializari:</td>
+                    <td>{liceu.sp}</td>
+                </tr>
+                <tr>
+                    <td>Site:</td>
+                    <td><a href={liceu.web} target="_blank">{liceu.web}</a></td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td>{liceu.p}</td>
+                </tr>
+                <tr>
+                    <td>Fax:</td>
+                    <td>{liceu.f}</td>
+                </tr>
+                <tr>
+                    <td>Grup boboci:</td>
+                    <td class="word-break"
+                        ><a href={liceu.link} target="_blank">{liceu.link}</a
+                        ></td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .right {
+        display: flex;
+        flex-direction: column;
+        order: 1;
+        flex: 1 1 0;
+        gap: 10px;
+    }
+    .r-top {
+        order: 0;
+        margin-top: 10px;
+        background-color: rgb(255, 255, 255, 0.9);
+        border-radius: 30px;
+        padding: 15px;
+    }
+    .img-liceu {
+        width: 100%;
+    }
+    .r-bottom {
+        order: 1;
+        background-color: rgb(255, 255, 255, 0.9);
+        border-radius: 30px;
+        padding: 15px;
+    }
+    table {
+        width: 100%;
+    }
+    td {
+        vertical-align: top;
+        font-weight: 500;
+    }
+    .word-break {
+        word-break: break-all;
+    }
+    @media only screen and (min-width: 1550px) {
+        .right {
+            gap: 20px;
+        }
+    }
+</style>
