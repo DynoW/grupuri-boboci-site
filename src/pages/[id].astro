@@ -72,51 +72,51 @@ if (!elevSnapshot.exists) {
 }
 const elev = elevSnapshot.data() as Elev;
 
-// /// Get liceu text from elev
-// function extractText(string: string) {
-//   const pattern = /<b>(.*?)<\/b>/g;
-//   const matches = string.match(pattern) || [];
-//   const result = matches.map((match: string) => match.replace(/<\/?b>/g, ""));
-//   return result;
-// }
-// const textLiceu = extractText(elev.h)[0];
+/// Get liceu text from elev
+function extractText(string: string) {
+  const pattern = /<b>(.*?)<\/b>/g;
+  const matches = string.match(pattern) || [];
+  const result = matches.map((match: string) => match.replace(/<\/?b>/g, ""));
+  return result;
+}
+const textLiceu = extractText(elev.h)[0];
 
-// /// Get liceu data
-// const liceeRef = db.collection("licee");
-// const liceuSnapshot = await liceeRef
-//   .doc(textLiceu)
-//   .collection("despre")
-//   .doc("Contact")
-//   .get();
+/// Get liceu data
+const liceeRef = db.collection("licee");
+const liceuSnapshot = await liceeRef
+  .doc(textLiceu)
+  .collection("despre")
+  .doc("Contact")
+  .get();
 
-// if (!liceuSnapshot.exists) {
-//   console.log("No such document! LICEU", liceuSnapshot.data());
-// }
+if (!liceuSnapshot.exists) {
+  console.log("No such document! LICEU", liceuSnapshot.data());
+}
 
-// const liceu = liceuSnapshot.data() as Liceu;
+const liceu = liceuSnapshot.data() as Liceu;
 
-// /// No liceu description
-// if (liceu.d == undefined) {
-//   liceu.d =
-//     "Nu avem o descriere pentru acest liceu. Contactati: ceva@ceva.com pentru a ne ajuta sa adugam una!";
-// }
+/// No liceu description
+if (liceu.d == undefined) {
+  liceu.d =
+    "Nu avem o descriere pentru acest liceu. Contactati: ceva@ceva.com pentru a ne ajuta sa adugam una!";
+}
 
-// /// Get specialization data
-// const textSpec = extractText(elev.sp)[0].substring(6);
-// const specSnapshot = await liceeRef
-//   .doc(textLiceu)
-//   .collection("specializari")
-//   .doc(textSpec)
-//   .get();
+/// Get specialization data
+const textSpec = extractText(elev.sp)[0].substring(6);
+const specSnapshot = await liceeRef
+  .doc(textLiceu)
+  .collection("specializari")
+  .doc(textSpec)
+  .get();
 
-// if (!specSnapshot.exists) {
-//   console.log("No such document! SPEC", specSnapshot.data());
-// }
+if (!specSnapshot.exists) {
+  console.log("No such document! SPEC", specSnapshot.data());
+}
 
-// const spec = specSnapshot.data() as Spec;
+const spec = specSnapshot.data() as Spec;
 
-const liceu = [{}];
-const spec = [{}];
+// const liceu = [{}];
+// const spec = [{}];
 ---
 
 <Layout title={elev.n}>
